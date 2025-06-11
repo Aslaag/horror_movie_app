@@ -1,3 +1,3 @@
 export function ItemInfo() {
-  return <><h1 className="uppercase">Item informations !</h1></>
+  return <><h2 className="uppercase">Item informations !</h2></>
 }

@@ -1,3 +1,11 @@
+import { MoreInfo } from "../components/MoreInfo"
+import { MovieInfo } from "../components/MovieInfo"
+
 export function HomePage() {
-  return <><h1 className="uppercase">Hello ! This is your HomePage !</h1></>
+  return <>
+  <section>
+    <MovieInfo/>
+    <MoreInfo/>
+  </section>
+  </>
 }

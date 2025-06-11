@@ -1,3 +1,3 @@
 export function Movie() {
-  return <><h1 className="uppercase">This is the detailed view !</h1></>
+  return <><h2 className="uppercase">This is the detailed view !</h2></>
 }

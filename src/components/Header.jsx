@@ -1,3 +1,9 @@
+import { Logo } from "./Logo"
+import { NavBar } from "./NavBar"
+
 export function Header() {
-  return <><h1 className="uppercase">Header !</h1></>
+  return <><div className="flex py-2 px-4 justify-between bg-gray-700">
+    <Logo/>
+    <NavBar/>
+  </div></>
 }

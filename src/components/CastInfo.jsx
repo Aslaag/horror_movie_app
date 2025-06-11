@@ -1,3 +1,3 @@
 export function CastInfo() {
-  return <><h1 className="uppercase">Casting informations !</h1></>
+  return <><h2 className="uppercase">Casting informations !</h2></>
 }

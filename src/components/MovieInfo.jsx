@@ -1,3 +1,3 @@
 export function MovieInfo() {
-  return <><h1 className="uppercase">Movie informations !</h1></>
+  return <><h2 className="uppercase">Movie informations !</h2></>
 }

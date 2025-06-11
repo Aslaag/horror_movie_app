@@ -1,3 +1,3 @@
 export function CategoryContainer() {
-  return <><h1 className="uppercase">Category Container !</h1></>
+  return <><h2 className="uppercase">Category Container !</h2></>
 }

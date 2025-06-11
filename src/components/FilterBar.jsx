@@ -1,3 +1,3 @@
 export function FilterBar() {
-  return <><h1 className="uppercase">Filter bar !</h1></>
+  return <><h2 className="uppercase">Filter bar !</h2></>
 }

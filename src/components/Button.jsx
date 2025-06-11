@@ -1,3 +1,5 @@
-export function Button() {
-  return <><h1 className="uppercase">My button !</h1></>
+export function Button(props) {
+  return <>
+  <button className="bg-black text-white p-2 rounded-xl">{props.buttonName}</button>
+  </>
 }
