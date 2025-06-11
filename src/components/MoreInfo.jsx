@@ -1,3 +1,3 @@
 export function MoreInfo() {
-  return <><h2 className="uppercase">More informations !</h2></>
+  return <><h2 className="text-gray-400">More info !</h2></>
 }

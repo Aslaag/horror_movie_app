@@ -3,7 +3,7 @@ import { Header } from "../components/Header";
 
 export function AppLayout() {
   return (
-    <div>
+    <div className="relative">
       <Header/>
       <Outlet/>
     </div>
