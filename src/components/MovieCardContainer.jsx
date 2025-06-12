@@ -7,12 +7,6 @@ export function MovieCardContainer() {
     <MovieCard/>
     <MovieCard/>
     <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
     
   </div>
 }

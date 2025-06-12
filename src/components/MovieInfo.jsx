@@ -1,10 +1,10 @@
 
-export function MovieInfo() {
+export function MovieInfo(props) {
   return <>
     <div className=" text-white">
-      <h2 className="uppercase">Movie title</h2>
-      Rating
-      <p>Movie Description</p>
+      <h2 className="uppercase">{props.movieInfo.original_title}</h2>
+      <p>{props.movieInfo.vote_average}</p>
+      <p>{props.movieInfo.overview}</p>
     </div>
   </>
 }

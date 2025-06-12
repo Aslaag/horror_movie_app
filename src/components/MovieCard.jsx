@@ -6,6 +6,7 @@ import { Button } from "./Button";
 
 export function MovieCard() {
   let navigate = useNavigate();
+  
   return <div>
     <div className="relative w-[300px]">
       <img src={`${CONFIG.IMG_SMALL}${CONFIG.SINNERS_LARGE}`} alt="Movie Preview"/>
