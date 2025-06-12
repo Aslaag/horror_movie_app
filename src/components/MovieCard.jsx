@@ -4,14 +4,14 @@ import { CONFIG } from "../constants/horror-constants";
 import { ROUTES } from "../routes/Routes";
 import { Button } from "./Button";
 
-export function MovieCard() {
+export function MovieCard(props) {
   let navigate = useNavigate();
   
   return <div>
     <div className="relative w-[300px]">
-      <img src={`${CONFIG.IMG_SMALL}${CONFIG.SINNERS_LARGE}`} alt="Movie Preview"/>
-      <p className="flex items-center bg-gray-800 text-white absolute bottom-0 w-full pl-3 justify-between">MovieTitle <Button className="absolute top-0" onClick={() => {
-          navigate(ROUTES.MOVIE);
+      <img src={`${CONFIG.IMG_SMALL}${props.img}`} alt="Movie Preview" className="rounded-sm"/>
+      <p className="flex items-center bg-red-900/70 rounded-b-sm text-white absolute bottom-0 w-full pl-3 justify-between">{props.title} <Button className="absolute top-0" onClick={() => {
+          navigate(ROUTES.MOVIE.replace(":id", props.id));
         }}><ArrowRight/></Button></p>
     </div>
    

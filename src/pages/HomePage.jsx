@@ -3,21 +3,36 @@ import { MoreInfo } from "../components/MoreInfo"
 import { MovieInfo } from "../components/MovieInfo"
 import { RecoContainer } from "../components/RecoContainer"
 import { CONFIG } from "../constants/horror-constants"
-import { loadPopularMovie, loadRecommendations } from "../utils/horror-utils"
+import { fetchPopularMovie, fetchRecommendations } from "../utils/horror-utils"
 
 export function HomePage() {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [recommendations, setRecommendations] = useState(null);
+  // setCurrentMovie(horrorMovieData[0]) remplis mon useState()
+  // setRecommendations(recoHorrorData) remplis mon useState()
 
+  async function loadPopular() {
+    const horrorMovieData = await fetchPopularMovie();
+    if (horrorMovieData && horrorMovieData.length > 0) {
+      setCurrentMovie(horrorMovieData[0]);
+    }
+  }
+
+  async function loadRecommendations() {
+    const recoHorrorData = await fetchRecommendations(currentMovie.id);
+    if (recoHorrorData && recoHorrorData.length > 0) {
+      setRecommendations(recoHorrorData);
+    }
+  }
   useEffect(() => {
-    loadPopularMovie();
-    loadRecommendations();
+    loadPopular();
   }, []);
 
   useEffect(() => {
-    setCurrentMovie
-    console.log(currentMovie)
-  }, [])
+    if (currentMovie) {
+    loadRecommendations();
+    }
+  }, [currentMovie]);
 
   const backgroundStyle = currentMovie
         ? {
@@ -37,7 +52,9 @@ export function HomePage() {
         )}
     </div>
     <div className=" ">
-          <RecoContainer recoInfo={recommendations}/>
+      {recommendations && (
+          <RecoContainer reco={recommendations}/>
+        )}
     </div>
   </section>
   </>

@@ -1,12 +1,15 @@
 import { MovieCard } from "./MovieCard";
 
-export function MovieCardContainer() {
+export function MovieCardContainer(props) {
   return <div className="flex gap-5 overflow-x-scroll">
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
-    <MovieCard/>
+      {props.reco.map((movie) => (
+        <MovieCard 
+          key={movie.id} 
+          title={movie.original_title} 
+          img={movie.backdrop_path}
+          id={movie.id}/>
+        )
+      )}
     
   </div>
 }
