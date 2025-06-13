@@ -3,13 +3,12 @@ import { MoreInfo } from "../components/MoreInfo"
 import { MovieInfo } from "../components/MovieInfo"
 import { RecoContainer } from "../components/RecoContainer"
 import { CONFIG } from "../constants/horror-constants"
-import { fetchPopularMovie, fetchRecommendations } from "../utils/horror-utils"
+import { fetchPopularMovie, fetchRecommendations, fetchSearch } from "../utils/horror-utils"
 
 export function HomePage() {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [recommendations, setRecommendations] = useState(null);
-  // setCurrentMovie(horrorMovieData[0]) remplis mon useState()
-  // setRecommendations(recoHorrorData) remplis mon useState()
+  const [searchResults, setSearchResults] = useState(null);
 
   async function loadPopular() {
     const horrorMovieData = await fetchPopularMovie();
@@ -24,6 +23,14 @@ export function HomePage() {
       setRecommendations(recoHorrorData);
     }
   }
+
+  async function loadSearch() {
+    const searchHorrorData = await fetchSearch();
+    if (searchHorrorData && searchHorrorData.length > 0) {
+      setCurrentMovie(searchResults);
+    }
+  }
+
   useEffect(() => {
     loadPopular();
   }, []);
@@ -33,6 +40,10 @@ export function HomePage() {
     loadRecommendations();
     }
   }, [currentMovie]);
+
+  useEffect(() => {
+    loadSearch();
+  }, []);
 
   const backgroundStyle = currentMovie
         ? {

@@ -10,8 +10,8 @@ export function RecoContainer(props) {
   : props.reco;
 
   return <>
-    <div className="flex flex-col p-2 gap-2 bg-gray-200/20">
-      <div className="flex justify-between items-center text-white">
+    <div className="flex flex-col pt-2 pl-2 gap-2 bg-gradient-to-b from-transparent to-red-950">
+      <div className="flex justify-between items-center pr-2 text-white">
         <h2>You may also like :</h2>
         <FilterBar filter={movieFilter} onFilterChange={setMovieFilter}/>
       </div>

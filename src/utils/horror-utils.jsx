@@ -25,3 +25,29 @@ import { CONFIG } from "../constants/horror-constants";
         console.error("Fetch error :", error);
       }};
     }
+
+    export async function fetchSearch(movieTitle) {
+      try {
+       const response = await fetch(`${CONFIG.BASE_URL}/search/movie?api_key=${CONFIG.API_KEY}&query=${movieTitle}`) // VA chercher l'url
+       const searchMovieData = await response.json() //Transforme en .json
+       const searchHorrorData =  searchMovieData.results.filter((movie) => movie.genre_ids.includes(27) && movie.original_title.toLowerCase().includes(movieTitle.toLowerCase()));
+       console.log(searchHorrorData)
+      return searchHorrorData // retourne le résultat
+      }
+      catch{(error) => {
+        console.error("Fetch error :", error);
+      }};
+    }
+
+    export async function fetchDetailsMovie(movieId) {
+      try {
+       const response = await fetch(`${CONFIG.BASE_URL}/movie/${movieId}?api_key=${CONFIG.API_KEY}&append_to_response=credits`) // VA chercher l'url
+       const detailsMovieData = await response.json() //Transforme en .json
+       const detailsHorrorData =  detailsMovieData.results.filter((movie) => movie.id === movieId);
+       console.log(detailsHorrorData)
+      return detailsHorrorData // retourne le résultat
+      }
+      catch{(error) => {
+        console.error("Fetch error :", error);
+      }};
+    }

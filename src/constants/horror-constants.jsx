@@ -1,6 +1,6 @@
 export const CONFIG = Object.freeze({
   BASE_URL: "https://api.themoviedb.org/3",
-  API_KEY: "313090d1c57aa7c7098e38accc72cd67",
+  API_KEY: import.meta.env.VITE_API_KEY_PARAM,
   LOGO_IMG: "/src/assets/app_logo.png",
   IMG_SMALL: "https://image.tmdb.org/t/p/w300",
   IMG_BIG: "https://image.tmdb.org/t/p/original",

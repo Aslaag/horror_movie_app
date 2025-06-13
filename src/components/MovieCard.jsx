@@ -8,7 +8,7 @@ export function MovieCard(props) {
   let navigate = useNavigate();
   
   return <div>
-    <div className="relative w-[300px]">
+    <div className="relative w-[250px]">
       <img src={`${CONFIG.IMG_SMALL}${props.img}`} alt="Movie Preview" className="rounded-sm"/>
       <p className="flex items-center bg-red-950/70 rounded-b-sm text-white absolute bottom-0 w-full pl-3 justify-between">{props.title} <Button className="absolute top-0" onClick={() => {
           navigate(ROUTES.MOVIE.replace(":id", props.id));
