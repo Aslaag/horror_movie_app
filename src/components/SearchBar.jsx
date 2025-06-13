@@ -1,17 +1,20 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
-import { fetchSearch } from "../utils/horror-utils";
 
-export function SearchBar() {
+export function SearchBar(props) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const changeInputValue = (e) => {
     setSearchInputValue(e.target.value)
   }
 
+  const setQuery = () => {
+    props.onSubmitSearch(searchInputValue)
+  }
+
   return <>
     <button 
       className=" hover:cursor-pointer" 
-      onClick={() => fetchSearch(searchInputValue)}
+      onClick={setQuery}
     >
       <Search color="white"/>
     </button>

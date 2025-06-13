@@ -5,7 +5,7 @@ import { RecoContainer } from "../components/RecoContainer"
 import { CONFIG } from "../constants/horror-constants"
 import { fetchPopularMovie, fetchRecommendations, fetchSearch } from "../utils/horror-utils"
 
-export function HomePage() {
+export function HomePage(props) {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [recommendations, setRecommendations] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
@@ -25,9 +25,9 @@ export function HomePage() {
   }
 
   async function loadSearch() {
-    const searchHorrorData = await fetchSearch();
+    const searchHorrorData = await fetchSearch(props.searchQuery);
     if (searchHorrorData && searchHorrorData.length > 0) {
-      setCurrentMovie(searchResults);
+      setSearchResults(searchResults);
     }
   }
 
@@ -42,8 +42,10 @@ export function HomePage() {
   }, [currentMovie]);
 
   useEffect(() => {
-    loadSearch();
-  }, []);
+    if (props.searchQuery) {
+      loadSearch();
+    }
+  }, [props.searchQuery]);
 
   const backgroundStyle = currentMovie
         ? {
