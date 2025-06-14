@@ -1,24 +1,44 @@
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { Button } from "../components/Button";
+import { MovieInfo } from "../components/MovieInfo";
+import { CONFIG } from "../constants/horror-constants";
+import { ROUTES } from "../routes/Routes";
 import { fetchDetailsMovie } from "../utils/horror-utils";
 
 export function Movie() {
+  let navigate = useNavigate();
   const detailsMovieId = useParams();
-  console.log(detailsMovieId.id);
   const [detailsMovie, setDetailsMovie] = useState("");
 
   async function loadDetailsMovie() {
     const detailsMovieData = await fetchDetailsMovie(detailsMovieId.id);
-    if (detailsMovieData && detailsMovieData.length > 0) {
-      setDetailsMovie(detailsMovieData[0]);
-    }
+      setDetailsMovie(detailsMovieData);
   }
 
   useEffect(() => {
       loadDetailsMovie();
     }, []);
+
+     const backgroundStyle = detailsMovie
+            ? {
+                backgroundImage: `url(${CONFIG.IMG_BIG}${detailsMovie.backdrop_path})`,
+    
+            }
+            : {};
     
   return <>
-    <h2 className="uppercase">This is the detailed view ! Movie : {detailsMovie.original_title}</h2>
+    <section style={backgroundStyle} className="bg-cover bg-center h-screen flex flex-col">
+      <div className="">
+        <Button 
+        onClick={() => {navigate(ROUTES.HOME)}} 
+        buttonName="Back to menu"><ArrowLeft/></Button></div>
+        <div className="flex flex-col gap-10 p-2 pt-20">
+          {detailsMovie && (
+              <MovieInfo movieInfo={detailsMovie}/>
+            )}
+        </div>
+      </section>
   </>
 }
