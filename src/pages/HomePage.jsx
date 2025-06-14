@@ -9,6 +9,7 @@ export function HomePage(props) {
   const [currentMovie, setCurrentMovie] = useState(null);
   const [recommendations, setRecommendations] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
+  console.log("props : ", props)
 
   async function loadPopular() {
     const horrorMovieData = await fetchPopularMovie();
@@ -25,9 +26,9 @@ export function HomePage(props) {
   }
 
   async function loadSearch() {
-    const searchHorrorData = await fetchSearch(props.searchQuery);
+    const searchHorrorData = await fetchSearch(props.queryValue);
     if (searchHorrorData && searchHorrorData.length > 0) {
-      setSearchResults(searchResults);
+      setSearchResults(searchHorrorData[0]);
     }
   }
 
@@ -42,10 +43,16 @@ export function HomePage(props) {
   }, [currentMovie]);
 
   useEffect(() => {
-    if (props.searchQuery) {
+    if (props.queryValue) {
       loadSearch();
     }
-  }, [props.searchQuery]);
+  }, [props.queryValue]);
+
+    useEffect(() => {
+    if (searchResults) {
+    setCurrentMovie(searchResults);
+    }
+  }, [searchResults]);
 
   const backgroundStyle = currentMovie
         ? {
